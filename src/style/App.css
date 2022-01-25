@@ -18,10 +18,10 @@
     display: flex;
     flex-direction: column;
 }
-.post_wrap .post_wrap__item button{
+.post_wrap .post_wrap__item button:not(:last-child){
     margin-top: auto;
+    margin-bottom: 10px;
 }
-
 .post_wrap .post_wrap__item .title{
     font-size: 18px;
     font-weight: 600;
@@ -75,4 +75,7 @@
     border-color: #049a05;
     background: #049a05;
     color: #fff;
+}
+a.active{
+    font-weight: bold;
 }

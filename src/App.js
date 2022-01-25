@@ -1,30 +1,43 @@
-import React from "react";
+import React, {useEffect, useState} from "react";
 import './style/App.css';
-import About from "./pages/About";
-import Posts from "./pages/Posts";
 import Navbar from "./component/UI/Navbar/Navbar";
 import {
     BrowserRouter,
-    Routes,
-    Route, NavLink
 } from "react-router-dom";
-
-
+import AppRouter from "./component/AppRouter";
+import {AuthContext} from "./context";
 
 
 function App(props) {
 
+    const [isAuth,setIsAuth] = useState(false)
+    const [isLoading,setLoading] = useState(true)
+
+    useEffect(()=>{
+        if(localStorage.getItem('auth')){
+            setIsAuth(true)
+        }
+        setLoading(false)
+    },[])
+
     return (
+        <AuthContext.Provider value={{
+            isAuth,
+            setIsAuth,
+            isLoading
+        }}>
+            <BrowserRouter>
+                {
+                    isAuth
+                    ? <Navbar/>
+                    : <h2>Войдите</h2>
 
-        <BrowserRouter>
 
-            <Navbar/>
-            <Routes>
-                <Route path='/about' element={<About/>} />
-                <Route path='/posts' element={<Posts/>} />
+                }
 
-            </Routes>
-        </BrowserRouter>
+                <AppRouter/>
+            </BrowserRouter>
+        </AuthContext.Provider>
     )
 }
 

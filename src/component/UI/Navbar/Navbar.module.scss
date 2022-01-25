@@ -1,0 +1,32 @@
+.navbar_wrap {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 15px;
+  margin-bottom: 15px;
+  list-style: none;
+  justify-content: space-between;
+  margin: 0 15px;
+
+  & ul {
+    list-style: none;
+    display: flex;
+    padding: 0;
+
+    & .item {
+      &:not(:last-child) {
+        margin-right: 15px;
+      }
+
+      & a {
+
+        font-size: 17px;
+        text-decoration: none;
+        text-transform: uppercase;
+        color: #282c34;
+
+      }
+    }
+  }
+
+}

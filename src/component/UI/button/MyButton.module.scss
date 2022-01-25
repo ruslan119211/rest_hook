@@ -1,0 +1,13 @@
+$--color_green: #049a05;
+
+.btn {
+    border: 1px solid $--color_green;
+    color: $--color_green;
+    background: transparent;
+    cursor: pointer;
+    transition: 0.15s ease-in-out;
+    &:hover{
+        background: $--color_green;
+        color: white;
+    }
+}

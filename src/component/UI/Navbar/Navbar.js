@@ -1,15 +1,31 @@
-import React from 'react';
+import React, {useContext} from 'react';
 import {NavLink} from "react-router-dom";
+import classes from './Navbar.module.scss'
+import MyButton from "../button/MyButton";
+import {AuthContext} from "../../../context";
 
 const Navbar = () => {
+
+    const {isAuth,setIsAuth} = useContext(AuthContext)
+
+    const logout =()=>{
+        setIsAuth(false)
+        localStorage.removeItem('auth')
+    }
+
     return (
-        <div className="navbar">
-            <li className='item'>
-                <NavLink to="/about">About</NavLink>
-            </li>
-            <li className='item'>
-                <NavLink  to="/posts">Posts</NavLink>
-            </li>
+        <div className={classes.navbar_wrap}>
+
+            <MyButton onClick={logout}>Выйти</MyButton>
+            <ul>
+                <li className={classes.item}>
+                    <NavLink to="/about">Посты с пагинацией</NavLink>
+                </li>
+                <li className={classes.item}>
+                    <NavLink to="/posts">Посты с бесконечной прокруткой</NavLink>
+                </li>
+            </ul>
+
         </div>
     );
 };
